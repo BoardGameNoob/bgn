@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: bgn_development
+  password: booth09
+
+test:
+  <<: *default
+  database: bgn_test
+  password: booth09
+
+production:
+  <<: *default
+  database: bgn_production
+  username: bgn
+  password: <%= ENV['BGN_DATABASE_PASSWORD'] %>
